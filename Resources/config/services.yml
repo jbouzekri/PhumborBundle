@@ -1,0 +1,9 @@
+parameters:
+    phumbor.url.builder_factory.class: Thumbor\Url\BuilderFactory
+
+services:
+    phumbor.url.builder_factory:
+        class: %phumbor.url.builder_factory.class%
+        arguments:
+            - %phumbor.server.url%
+            - %phumbor.secret%
