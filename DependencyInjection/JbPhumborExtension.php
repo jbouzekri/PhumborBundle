@@ -14,18 +14,22 @@ class JbPhumborExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
+        $config = $this->processConfiguration(new Configuration(), $configs);
+        $this->loadConfiguration($container, $config);
+
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
-
-        $container->setParameter('phumbor.server.url', 'http://thumbor.example.com:1234');
-        $container->setParameter('phumbor.secret', '1234567890');
     }
 
     /**
-     * {@inheritDoc}
+     * Load configuration
+     *
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     * @param array $config
      */
-    public function getAlias()
+    protected function loadConfiguration(ContainerBuilder $container, array $config)
     {
-        return 'jb_phumbor';
+        $container->setParameter('phumbor.server.url', $config['server']['url']);
+        $container->setParameter('phumbor.secret', $config['server']['secret']);
     }
 }
