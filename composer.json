@@ -1,0 +1,15 @@
+{
+    "name": "jbouzekri/phumbor-bundle",
+    "type": "symfony-bundle",
+    "description": "A bridge for symfony with the phumbor client from 99designs",
+    "keywords": ["phumbor", "thumbor", "Bundle", "Helper", "Twig", "Symfony"],
+    "homepage": "https://github.com/jbouzekri/PhumborBundle",
+    "license": "MIT",
+    "require": {
+        "99designs/phumbor": "1.0.0"
+    },
+    "autoload": {
+        "psr-0": { "Jb\\Bundle\\PhumborBundle": "" }
+    },
+    "target-dir": "Jb/Bundle/PhumborBundle"
+}
