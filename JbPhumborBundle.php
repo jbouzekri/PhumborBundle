@@ -5,9 +5,9 @@ namespace Jb\Bundle\PhumborBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Description of JbPhumborBundle
+ * JbPhumborBundle bundle
  *
- * @author jobou
+ * @author Jonathan Bouzekri <jonathan.bouzekri@gmail.com>
  */
 class JbPhumborBundle extends Bundle
 {
