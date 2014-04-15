@@ -50,6 +50,11 @@ class Configuration implements ConfigurationInterface
      */
     private function addTransformationSection(ArrayNodeDefinition $rootNode)
     {
+        // Resize validate function. Resize value are int >= 0 or the string "orig"
+        $validateResize = function ($v) {
+            return $v !== "orig" && !is_int($v);
+        };
+
         $rootNode
             ->children()
                 ->arrayNode('transformation')
@@ -82,8 +87,26 @@ class Configuration implements ConfigurationInterface
                             ->end()
                             ->arrayNode('resize')
                                 ->children()
-                                    ->scalarNode('width')->isRequired()->end()
-                                    ->scalarNode('height')->isRequired()->end()
+                                    ->scalarNode('width')
+                                        ->isRequired()
+                                        ->validate()
+                                            ->ifTrue($validateResize)
+                                            ->thenInvalid(
+                                                'Invalid transformation.resize.width value "%s". '
+                                                    . 'It must be an integer or the string "orig"'
+                                            )
+                                        ->end()
+                                    ->end()
+                                    ->scalarNode('height')
+                                        ->isRequired()
+                                        ->validate()
+                                            ->ifTrue($validateResize)
+                                            ->thenInvalid(
+                                                'Invalid transformation.resize.height value "%s". '
+                                                    . 'It must be an integer or the string "orig"'
+                                            )
+                                        ->end()
+                                    ->end()
                                 ->end()
                             ->end()
                             ->scalarNode('halign')->end()
