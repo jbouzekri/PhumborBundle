@@ -1,0 +1,10 @@
+jb_phumbor:
+    server:
+        url: http://localhost:8888
+        secret: 123456789
+    transformations:
+        fit_in_test:
+            fit_in:
+                width: 100
+                height: 80
+
