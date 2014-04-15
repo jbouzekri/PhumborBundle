@@ -31,5 +31,6 @@ class JbPhumborExtension extends Extension
     {
         $container->setParameter('phumbor.server.url', $config['server']['url']);
         $container->setParameter('phumbor.secret', $config['server']['secret']);
+        $container->setParameter('phumbor.transformations', $config['transformations']);
     }
 }

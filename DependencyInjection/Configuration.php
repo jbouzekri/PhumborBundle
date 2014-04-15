@@ -57,7 +57,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->arrayNode('transformation')
+                ->arrayNode('transformations')
                     ->prototype('array')
                         // Filter key is a prototype array. Remove it if empty array
                         ->validate()
