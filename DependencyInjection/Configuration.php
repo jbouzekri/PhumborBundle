@@ -61,12 +61,13 @@ class Configuration implements ConfigurationInterface
                     ->prototype('array')
                         // Filter key is a prototype array. Remove it if empty array
                         ->validate()
-                            ->always(function($val) {
+                            ->always(function ($val) {
                                 if (empty($val['filters'])) {
                                     unset($val['filters']);
                                 }
 
-                                return $val;})
+                                return $val;
+                            })
                         ->end()
                         ->children()
                             ->scalarNode('trim')
@@ -92,8 +93,8 @@ class Configuration implements ConfigurationInterface
                                         ->validate()
                                             ->ifTrue($validateResize)
                                             ->thenInvalid(
-                                                'Invalid transformation.resize.width value "%s". '
-                                                    . 'It must be an integer or the string "orig"'
+                                                'Invalid transformation.resize.width value %s. '
+                                                . 'It must be an integer or the string "orig"'
                                             )
                                         ->end()
                                     ->end()
@@ -102,15 +103,31 @@ class Configuration implements ConfigurationInterface
                                         ->validate()
                                             ->ifTrue($validateResize)
                                             ->thenInvalid(
-                                                'Invalid transformation.resize.height value "%s". '
-                                                    . 'It must be an integer or the string "orig"'
+                                                'Invalid transformation.resize.height value %s. '
+                                                . 'It must be an integer or the string "orig"'
                                             )
                                         ->end()
                                     ->end()
                                 ->end()
                             ->end()
-                            ->scalarNode('halign')->end()
-                            ->scalarNode('valign')->end()
+                            ->scalarNode('halign')
+                                ->validate()
+                                    ->ifNotInArray(array('left', 'center', 'right'))
+                                    ->thenInvalid(
+                                        'Invalid transformation.halign value %s. '
+                                        . 'It must be one of the following : left, center, right.'
+                                    )
+                                ->end()
+                            ->end()
+                            ->scalarNode('valign')
+                                ->validate()
+                                    ->ifNotInArray(array('top', 'middle', 'bottom'))
+                                    ->thenInvalid(
+                                        'Invalid transformation.valign value %s. '
+                                        . 'It must be one of the following : top, middle, bottom.'
+                                    )
+                                ->end()
+                            ->end()
                             ->booleanNode('smart_crop')->end()
                             ->arrayNode('filters')
                                 ->prototype('array')
