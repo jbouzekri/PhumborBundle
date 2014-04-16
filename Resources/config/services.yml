@@ -1,5 +1,6 @@
 parameters:
     phumbor.url.builder_factory.class: Thumbor\Url\BuilderFactory
+    phumbor.url.transformer.class: Jb\Bundle\PhumborBundle\Transformer\BaseTransformer
 
 services:
     phumbor.url.builder_factory:
@@ -7,3 +8,9 @@ services:
         arguments:
             - %phumbor.server.url%
             - %phumbor.secret%
+
+    phumbor.url.transformer:
+        class: %phumbor.url.transformer.class%
+        arguments:
+            - @phumbor.url.builder_factory
+            - %phumbor.transformations%
