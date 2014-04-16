@@ -30,7 +30,7 @@ jb_phumbor:
 Quick use case
 ==============
 
-You need to resize the image of your article to fit in a square of 50x50. Define the follogin transformation in your config.yml :
+You need to resize the image of your article to fit in a square of 50x50. Define the following transformation in your config.yml :
 
 ``` yml
 jb_phumbor:
@@ -48,4 +48,4 @@ Now you can use it in twig :
 License
 =======
 
-MIT; see [`LICENSE`][license]
+MIT; see [LICENSE][LICENSE]
