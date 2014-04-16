@@ -4,13 +4,13 @@ PhumborBundle
 A bridge for symfony with the [phumbor client from 99designs](https://github.com/99designs/phumbor) to generate thumbor url.
 
 Prerequisites
-=============
+-------------
 
 Of course, you must have a [thumbor server](https://github.com/thumbor/thumbor/wiki) installed and operationnal.
 If not, you can follow the [official installation documentation](https://github.com/thumbor/thumbor/wiki/Installing).
 
 Installation
-============
+------------
 
 Add `jbouzekri/phumbor-bundle` as a dependency in [`composer.json`][composer].
 
@@ -28,7 +28,7 @@ jb_phumbor:
 ```
 
 Quick use case
-==============
+--------------
 
 You need to resize the image of your article to fit in a square of 50x50. Define the following transformation in your config.yml :
 
@@ -45,7 +45,12 @@ Now you can use it in twig :
 {{ thumbor(<the absolute url of your image>, 'article_list') }}
 ```
 
-License
-=======
+Documentation
+-------------
 
-MIT; see [LICENSE][LICENSE]
+* [Configuration Reference](Resources/doc/reference.md)
+
+License
+-------
+
+MIT; see [LICENSE](LICENSE)
