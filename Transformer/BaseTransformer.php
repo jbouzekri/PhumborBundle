@@ -187,4 +187,21 @@ class BaseTransformer
     {
         $url->smartCrop($args);
     }
+
+    /**
+     * Apply filters
+     *
+     * @param \Thumbor\Url\Builder $url
+     * @param array $args
+     *
+     * @return void
+     */
+    protected function filters(Builder $url, $args)
+    {
+        foreach ($args as $arg) {
+            $arguments = (is_array($arg['arguments'])) ? $arg['arguments'] : array($arg['arguments']);
+            array_unshift($arguments, $arg['name']);
+            call_user_func_array(array($url, 'addFilter'), $arguments);
+        }
+    }
 }

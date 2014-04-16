@@ -215,4 +215,30 @@ class BaseTransformerTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($transformedUrl, $buildedUrl);
     }
+
+    /**
+     * Test filters
+     */
+    public function testFilters()
+    {
+        $transformedUrl = $this->transformer->transform(
+            'http://phumbor.jb.fr/logo.png',
+            null,
+            array(
+                'filters'=> array(
+                    array('name'=>'brightness', 'arguments' => 56),
+                    array('name'=>'color', 'arguments' => array('black', 'red')),
+                )
+            )
+        );
+
+        $buildedUrl = $this
+            ->factory
+            ->url('http://phumbor.jb.fr/logo.png')
+            ->addFilter('brightness', 56)
+            ->addFilter('color', 'black', 'red')
+        ;
+
+        $this->assertEquals($transformedUrl, $buildedUrl);
+    }
 }

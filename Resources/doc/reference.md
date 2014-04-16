@@ -42,8 +42,8 @@ server.secret
 
 The secret shared with your thumbor server
 
-transformations.<transformation_name>.trim
-------------------------------------------
+transformations.&lt;transformation_name&gt;.trim
+------------------------------------------------
 
 Trim surrounding space from the thumbnail. The top-left corner of the image is assumed to contain the background colour.
 To specify otherwise, pass either 'top-left' or 'bottom-right'.
@@ -55,8 +55,8 @@ jb_phumbor:
             trim: true
 ```
 
-transformations.<transformation_name>.crop
-------------------------------------------
+transformations.&lt;transformation_name&gt;.crop
+------------------------------------------------
 
 Manually specify crop window
 
@@ -71,8 +71,8 @@ jb_phumbor:
                 bottom_right_y: 50
 ```
 
-transformations.<transformation_name>.fit_in
---------------------------------------------
+transformations.&lt;transformation_name&gt;.fit_in
+--------------------------------------------------
 
 Resize the image to fit in a box of the specified dimensions.
 
@@ -87,8 +87,8 @@ jb_phumbor:
 
 Use either fit_in or resize but not both
 
-transformations.<transformation_name>.resize
---------------------------------------------
+transformations.&lt;transformation_name&gt;.resize
+--------------------------------------------------
 
 Resize the image to the specified dimensions. Overrides any previous call to `fitIn` or `resize`.
 Use a value of 0 for proportional resizing.
@@ -104,8 +104,8 @@ jb_phumbor:
 
 Use either fit_in or resize but not both
 
-transformations.<transformation_name>.halign
---------------------------------------------
+transformations.&lt;transformation_name&gt;.halign
+--------------------------------------------------
 
 Specify horizontal alignment used if width is altered due to cropping. Choose on of the following value : 'left', 'center', 'right'
 
@@ -116,8 +116,8 @@ jb_phumbor:
             halign: center
 ```
 
-transformations.<transformation_name>.valign
---------------------------------------------
+transformations.&lt;transformation_name&gt;.valign
+--------------------------------------------------
 
 Specify horizontal alignment used if width is altered due to cropping. Choose on of the following value : 'left', 'center', 'right'
 Specify vertical alignment used if height is altered due to cropping. Choose on of the following value : 'top', 'middle', 'bottom'
@@ -129,8 +129,8 @@ jb_phumbor:
             valign: middle
 ```
 
-transformations.<transformation_name>.smart_crop
-------------------------------------------------
+transformations.&lt;transformation_name&gt;.smart_crop
+------------------------------------------------------
 
 Specify that smart cropping should be used (overrides halign/valign).
 
@@ -141,8 +141,8 @@ jb_phumbor:
             smart_crop: true
 ```
 
-transformations.<transformation_name>.filters
----------------------------------------------
+transformations.&lt;transformation_name&gt;.filters
+---------------------------------------------------
 
 Append one or many filters.
 The filter must be defined with an array with key name and arguments.
