@@ -12,4 +12,4 @@ before_script:
 
 script: 
   - phpunit -c Tests/
-  - phpcs --standard=PSR2 --extensions=php .
+  - phpcs --standard=PSR2 --extensions=php --ignore=vendor .
