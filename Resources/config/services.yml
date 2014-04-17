@@ -21,4 +21,4 @@ services:
         arguments:
             - @phumbor.url.transformer
         tags:
-            - { name: twig_extension }
+            - { name: twig.extension }

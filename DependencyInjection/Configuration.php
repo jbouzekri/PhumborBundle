@@ -29,7 +29,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('url')
-                            ->defaultValue('http://localhost')
+                            ->defaultValue('http://localhost:8888')
                         ->end()
                         ->scalarNode('secret')
                             ->defaultValue('')

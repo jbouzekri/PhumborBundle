@@ -37,6 +37,16 @@ class PhumborExtension extends \Twig_Extension
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function getFunctions()
+    {
+        return array(
+            new \Twig_SimpleFunction('thumbor', array($this, 'transform')),
+        );
+    }
+
+    /**
      * Twig thumbor filter
      *
      * @param string $orig

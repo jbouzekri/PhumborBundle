@@ -134,7 +134,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             'server' => array(
-                'url' => 'http://localhost',
+                'url' => 'http://localhost:8888',
                 'secret' => ''
             ),
             'transformations' => array()
