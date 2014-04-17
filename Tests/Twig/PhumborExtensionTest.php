@@ -62,7 +62,7 @@ class PhumborExtensionTest extends \PHPUnit_Framework_TestCase
     public function testTransform()
     {
         $transformedUrl = $this->extension->transform('logo.png', 'width_50');
-        $builtUrl = $this->factory->url('logo.png')->resize(50,0);
+        $builtUrl = $this->factory->url('logo.png')->resize(50, 0);
 
         $this->assertEquals($builtUrl, $transformedUrl);
     }
