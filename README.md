@@ -1,6 +1,8 @@
 PhumborBundle
 =============
 
+[![Build Status](https://travis-ci.org/jbouzekri/PhumborBundle.svg?branch=master)](https://travis-ci.org/jbouzekri/PhumborBundle)
+
 A bridge for symfony with the [phumbor client from 99designs](https://github.com/99designs/phumbor) to generate thumbor url.
 
 Prerequisites
