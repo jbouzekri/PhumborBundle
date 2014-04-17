@@ -6,7 +6,9 @@
     "homepage": "https://github.com/jbouzekri/PhumborBundle",
     "license": "MIT",
     "require": {
-        "99designs/phumbor": "1.0.0",
+        "99designs/phumbor": "1.0.0"
+    },
+    "require-dev": {
         "symfony/config": "~2.4",
         "symfony/http-kernel": "~2.4",
         "symfony/dependency-injection": "~2.4",

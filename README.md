@@ -18,7 +18,16 @@ Installation
 Add `jbouzekri/phumbor-bundle` as a dependency in [`composer.json`][composer].
 
 ``` yml
-"jbouzekri/phumbor-bundle": "dev-master"
+"jbouzekri/phumbor-bundle": "1.0"
+```
+
+Enable the bundle in your AppKernel :
+
+``` php
+$bundles = array(
+    ...
+    new Jb\Bundle\PhumborBundle\JbPhumborBundle()
+);
 ```
 
 In your config.yml, configure at least the url of your thumbor server and the secret :
