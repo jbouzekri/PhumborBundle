@@ -1,6 +1,7 @@
 parameters:
     phumbor.url.builder_factory.class: Thumbor\Url\BuilderFactory
     phumbor.url.transformer.class: Jb\Bundle\PhumborBundle\Transformer\BaseTransformer
+    phumbor.twig.extension.class: Jb\Bundle\PhumborBundle\Twig\PhumborExtension
 
 services:
     phumbor.url.builder_factory:
@@ -14,3 +15,10 @@ services:
         arguments:
             - @phumbor.url.builder_factory
             - %phumbor.transformations%
+
+    phumbor.twig.extension:
+        class: %phumbor.twig.extension.class%
+        arguments:
+            - @phumbor.url.transformer
+        tags:
+            - { name: twig_extension }
