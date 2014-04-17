@@ -49,6 +49,8 @@ Documentation
 -------------
 
 * [Configuration Reference](Resources/doc/reference.md)
+* [Service](Resources/doc/service.md)
+* [Twig Helper](Resources/doc/twig_helper.md)
 
 License
 -------
