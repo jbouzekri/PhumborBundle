@@ -15,7 +15,7 @@ If not, you can follow the [official installation documentation](https://github.
 Installation
 ------------
 
-Add `jbouzekri/phumbor-bundle` as a dependency in [`composer.json`][composer].
+Add `jbouzekri/phumbor-bundle` as a dependency in `composer.json`.
 
 ``` yml
 "jbouzekri/phumbor-bundle": "1.0.0"
