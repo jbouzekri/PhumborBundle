@@ -25,6 +25,7 @@ class BaseTransformer
         'halign' => 'halign',
         'valign' => 'valign',
         'smart_crop' => 'smartCrop',
+        'metadata_only' => 'metadataOnly',
         'filters' => 'filters'
     );
 
@@ -186,6 +187,19 @@ class BaseTransformer
     protected function smartCrop(Builder $url, $args)
     {
         $url->smartCrop($args);
+    }
+
+    /**
+     * Request metadata endpoint
+     *
+     * @param \Thumbor\Url\Builder $url
+     * @param array $args
+     *
+     * @return void
+     */
+    protected function metadataOnly(Builder $url, $args)
+    {
+        $url->metadataOnly($args);
     }
 
     /**

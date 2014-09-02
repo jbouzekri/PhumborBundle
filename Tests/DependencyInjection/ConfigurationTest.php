@@ -87,6 +87,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             array(array('valign'=>'middle'), array('valign'=>'middle')),
             array(array('valign'=>'bottom'), array('valign'=>'bottom')),
             array(array('smart_crop'=>true), array('smart_crop'=>true)),
+            array(array('metadata_only'=>true), array('metadata_only'=>true)),
             array(
                 array('filters'=>array( array('name'=>'brightness', 'arguments'=>array('82')) )),
                 array('filters'=>array( array('name'=>'brightness', 'arguments'=>array('82')) )),

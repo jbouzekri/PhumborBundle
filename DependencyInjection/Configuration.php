@@ -129,6 +129,7 @@ class Configuration implements ConfigurationInterface
                                 ->end()
                             ->end()
                             ->booleanNode('smart_crop')->end()
+                            ->booleanNode('metadata_only')->end()
                             ->arrayNode('filters')
                                 ->prototype('array')
                                     ->children()
