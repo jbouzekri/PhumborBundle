@@ -18,7 +18,7 @@ Installation
 Add `jbouzekri/phumbor-bundle` as a dependency in `composer.json`.
 
 ``` yml
-"jbouzekri/phumbor-bundle": "1.0.0"
+"jbouzekri/phumbor-bundle": "~1.0"
 ```
 
 Enable the bundle in your AppKernel :

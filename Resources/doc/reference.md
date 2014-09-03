@@ -28,6 +28,7 @@ jb_phumbor:
             halign: center
             valign: middle
             smart_crop: true
+            metadata_only: true
             filters:
                 - { name: "brightness", arguments: 52 }
 ```
@@ -139,6 +140,18 @@ jb_phumbor:
     transformations:
         transformation_name:
             smart_crop: true
+```
+
+transformations.&lt;transformation_name&gt;.metadata_only
+---------------------------------------------------------
+
+Specify that JSON metadata should be returned instead of the thumbnailed.
+
+``` yml
+jb_phumbor:
+    transformations:
+        transformation_name:
+            metadata_only: true
 ```
 
 transformations.&lt;transformation_name&gt;.filters
