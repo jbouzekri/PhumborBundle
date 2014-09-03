@@ -194,7 +194,7 @@ class BaseTransformerTest extends \PHPUnit_Framework_TestCase
         $transformedUrl = $this->transformer->transform(
             'http://phumbor.jb.fr/logo.png',
             null,
-            array('valign'=> 'middle')
+            array('valign' => 'middle')
         );
         $buildedUrl = $this->factory->url('http://phumbor.jb.fr/logo.png')->valign('middle');
 
@@ -209,9 +209,24 @@ class BaseTransformerTest extends \PHPUnit_Framework_TestCase
         $transformedUrl = $this->transformer->transform(
             'http://phumbor.jb.fr/logo.png',
             null,
-            array('smart_crop'=> true)
+            array('smart_crop' => true)
         );
         $buildedUrl = $this->factory->url('http://phumbor.jb.fr/logo.png')->smartCrop(true);
+
+        $this->assertEquals($transformedUrl, $buildedUrl);
+    }
+
+    /**
+     * Test metadataOnly
+     */
+    public function testMetadataOnly()
+    {
+        $transformedUrl = $this->transformer->transform(
+            'http://phumbor.jb.fr/logo.png',
+            null,
+            array('metadata_only' => true)
+        );
+        $buildedUrl = $this->factory->url('http://phumbor.jb.fr/logo.png')->metadataOnly(true);
 
         $this->assertEquals($transformedUrl, $buildedUrl);
     }
