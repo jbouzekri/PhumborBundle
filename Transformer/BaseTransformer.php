@@ -21,6 +21,7 @@ class BaseTransformer
         'trim' => 'trim',
         'crop' => 'crop',
         'fit_in' => 'fitIn',
+        'full_fit_in' => 'fullFitIn',
         'resize' => 'resize',
         'halign' => 'halign',
         'valign' => 'valign',
@@ -148,6 +149,19 @@ class BaseTransformer
     protected function fitIn(Builder $url, $args)
     {
         $url->fitIn($args['width'], $args['height']);
+    }
+
+    /**
+     * Apply fullFitIn filter
+     *
+     * @param \Thumbor\Url\Builder $url
+     * @param array $args
+     *
+     * @return void
+     */
+    protected function fullFitIn(Builder $url, $args)
+    {
+        $url->fullFitIn($args['width'], $args['height']);
     }
 
     /**
