@@ -172,6 +172,21 @@ class BaseTransformerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test fullFitIn
+     */
+    public function testFullFitIn()
+    {
+        $transformedUrl = $this->transformer->transform(
+            'http://phumbor.jb.fr/logo.png',
+            null,
+            array('full_fit_in'=> array('width'=>10, 'height'=>10))
+        );
+        $buildedUrl = $this->factory->url('http://phumbor.jb.fr/logo.png')->fullFitIn(10, 10);
+
+        $this->assertEquals($transformedUrl, $buildedUrl);
+    }
+
+    /**
      * Test halign
      */
     public function testHalign()

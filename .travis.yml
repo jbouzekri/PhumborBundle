@@ -4,12 +4,16 @@ php:
   - 5.3
   - 5.4
   - 5.5
+  - 5.6
+  - nightly
 
-before_script: 
+before_script:
   - pear install pear/PHP_CodeSniffer
   - composer install -n
   - phpenv rehash
+  - wget https://scrutinizer-ci.com/ocular.phar
 
-script: 
-  - phpunit -c Tests/
+script:
+  - phpunit -c Tests/ --coverage-clover=coverage.clover
   - phpcs --standard=PSR2 --extensions=php --ignore=vendor .
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover

@@ -66,6 +66,10 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(array('fit_in'=>array('width'=>10,'height'=>20)), array('fit_in'=>array('width'=>10,'height'=>20))),
+            array(
+                array('full_fit_in'=>array('width'=>10,'height'=>20)),
+                array('full_fit_in'=>array('width'=>10,'height'=>20))
+            ),
             array(array('trim'=>true), array('trim'=>true)),
             array(array('trim'=>'string'), array('trim'=>'string')),
             array(
