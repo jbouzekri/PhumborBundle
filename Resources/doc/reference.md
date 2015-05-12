@@ -22,6 +22,9 @@ jb_phumbor:
             fit_in:
                 width: 50
                 height: 50
+            full_fit_in:
+                width: 50
+                height: 50
             resize:
                 width: 50
                 height: 50
