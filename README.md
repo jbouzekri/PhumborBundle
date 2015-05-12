@@ -2,6 +2,7 @@ PhumborBundle
 =============
 
 [![Build Status](https://travis-ci.org/jbouzekri/PhumborBundle.svg?branch=master)](https://travis-ci.org/jbouzekri/PhumborBundle)
+[![Code Coverage](https://scrutinizer-ci.com/g/jbouzekri/PhumborBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/jbouzekri/PhumborBundle/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jbouzekri/PhumborBundle/badges/quality-score.png?s=a0a8958b6ab291dc6f867b7df49cf55be590c23d)](https://scrutinizer-ci.com/g/jbouzekri/PhumborBundle/)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/f3668751-012f-4444-9d48-7833e2a420ec/mini.png)](https://insight.sensiolabs.com/projects/f3668751-012f-4444-9d48-7833e2a420ec)
 
