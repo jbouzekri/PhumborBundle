@@ -5,20 +5,20 @@ parameters:
 
 services:
     phumbor.url.builder_factory:
-        class: %phumbor.url.builder_factory.class%
+        class: '%phumbor.url.builder_factory.class%'
         arguments:
-            - %phumbor.server.url%
-            - %phumbor.secret%
+            - '%phumbor.server.url%'
+            - '%phumbor.secret%'
 
     phumbor.url.transformer:
-        class: %phumbor.url.transformer.class%
+        class: '%phumbor.url.transformer.class%'
         arguments:
-            - @phumbor.url.builder_factory
-            - %phumbor.transformations%
+            - '@phumbor.url.builder_factory'
+            - '%phumbor.transformations%'
 
     phumbor.twig.extension:
-        class: %phumbor.twig.extension.class%
+        class: '%phumbor.twig.extension.class%'
         arguments:
-            - @phumbor.url.transformer
+            - '@phumbor.url.transformer'
         tags:
             - { name: twig.extension }
