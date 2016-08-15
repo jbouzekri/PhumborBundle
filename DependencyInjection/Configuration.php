@@ -31,6 +31,7 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('url')
                             ->treatNullLike(array('http://localhost:8888'))
                             ->prototype('scalar')->end()
+                            ->defaultValue(array('http://localhost:8888'))
                         ->end()
                         ->scalarNode('secret')
                             ->defaultValue('')
