@@ -29,6 +29,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->arrayNode('url')
+                            ->treatNullLike(array('http://localhost:8888'))
                             ->prototype('scalar')->end()
                         ->end()
                         ->scalarNode('secret')
