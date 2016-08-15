@@ -26,7 +26,7 @@ abstract class JbPhumborExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $container = $this->createContainerFromFile('transformers');
 
-        $this->assertEquals($container->getParameter('phumbor.server.url'), 'http://localhost:8888');
+        $this->assertEquals($container->getParameter('phumbor.server.url'), array('http://localhost:8888'));
         $this->assertEquals($container->getParameter('phumbor.secret'), '123456789');
         $this->assertEquals(
             $container->getParameter('phumbor.transformations'),

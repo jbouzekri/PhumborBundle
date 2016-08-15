@@ -35,13 +35,13 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $config = $processor->processConfiguration(new Configuration(), array(
             array(
                 'server' => array(
-                    'url' => 'http://jb.phumbor.fr:8888',
+                    'url' => array('http://jb.phumbor.fr:8888'),
                     'secret' => '123456789'
                 )
             )
         ));
 
-        $this->assertEquals($config['server']['url'], 'http://jb.phumbor.fr:8888');
+        $this->assertEquals($config['server']['url'], array('http://jb.phumbor.fr:8888'));
         $this->assertEquals($config['server']['secret'], '123456789');
     }
 
@@ -139,7 +139,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             'server' => array(
-                'url' => 'http://localhost:8888',
+                'url' => array('http://localhost:8888'),
                 'secret' => ''
             ),
             'transformations' => array()

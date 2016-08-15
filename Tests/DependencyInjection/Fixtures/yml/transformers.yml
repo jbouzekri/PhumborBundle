@@ -1,6 +1,6 @@
 jb_phumbor:
     server:
-        url: http://localhost:8888
+        url: ['http://localhost:8888']
         secret: 123456789
     transformations:
         fit_in_test:

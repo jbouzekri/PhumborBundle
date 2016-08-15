@@ -37,7 +37,7 @@ In your config.yml, configure at least the url of your thumbor server and the se
 ``` yml
 jb_phumbor:
     server:
-        url: http://localhost
+        url: ['http://localhost']
         secret: 123456789
 ```
 
