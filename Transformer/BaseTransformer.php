@@ -232,4 +232,15 @@ class BaseTransformer
             call_user_func_array(array($url, 'addFilter'), $arguments);
         }
     }
+
+    /**
+    * Setter allowing for factory override
+    *
+    * @param BuildFactory $factory
+    *
+    */
+    public function setFactory(BuildFactory $factory)
+    {
+        $this->factory = $factory;
+    }
 }
