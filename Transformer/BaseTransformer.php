@@ -236,10 +236,9 @@ class BaseTransformer
     /**
     * Setter allowing for factory override
     *
-    * @param BuildFactory $factory
-    *
+    * @param \Thumbor\Url\BuilderFactory $factory
     */
-    public function setFactory(BuildFactory $factory)
+    public function setFactory(BuilderFactory $factory)
     {
         $this->factory = $factory;
     }

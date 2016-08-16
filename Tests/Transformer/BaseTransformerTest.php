@@ -271,4 +271,21 @@ class BaseTransformerTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($transformedUrl, $buildedUrl);
     }
+
+    /**
+     * Test setFactory
+     */
+    public function testSetFactory()
+    {
+        $overrideFactory = new BuilderFactory('http://mynewhostname', '123456799');
+        $this->transformer->setFactory($overrideFactory);
+
+        $transformedUrl = $this->transformer->transform(
+            'http://phumbor.jb.fr/logo.png',
+            null,
+            array('metadata_only' => true)
+        );
+        $buildedUrl = $overrideFactory->url('http://phumbor.jb.fr/logo.png')->metadataOnly(true);
+        $this->assertEquals($transformedUrl, $buildedUrl);
+    }
 }
