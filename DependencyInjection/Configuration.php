@@ -20,8 +20,12 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('jb_phumbor');
+        if (Kernel::VERSION_ID >= 40200) {
+            $root = new TreeBuilder('jb_phumbor');
+        } else {
+            $builder = new TreeBuilder();
+            $root = $builder->root('jb_phumbor');
+        }
 
         $rootNode
             ->children()
