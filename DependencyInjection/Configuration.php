@@ -23,12 +23,12 @@ class Configuration implements ConfigurationInterface
     {
         if (Kernel::VERSION_ID >= 40200) {
             $treeBuilder = new TreeBuilder('jb_phumbor');
+            $rootNode = $treeBuilder->getRootNode();
         } else {
             $treeBuilder = new TreeBuilder();
+            $rootNode = $treeBuilder->root('jb_phumbor');
         }
-
-        $rootNode = $treeBuilder->root('jb_phumbor');
-
+        
         $rootNode
             ->children()
                 ->arrayNode('server')
