@@ -25,7 +25,7 @@ class Configuration implements ConfigurationInterface
             $treeBuilder = new TreeBuilder('jb_phumbor');
         } else {
             $treeBuilder = new TreeBuilder();
-            $rootNode = $builder->root('jb_phumbor');
+            $rootNode = $treeBuilder->root('jb_phumbor');
         }
 
         $rootNode
