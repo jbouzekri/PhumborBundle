@@ -12,7 +12,8 @@
         "symfony/config": "~2.4",
         "symfony/http-kernel": "~2.4",
         "symfony/dependency-injection": "~2.4",
-        "twig/extensions": "~1.0"
+        "twig/extensions": "~1.0",
+        "phpunit/phpunit": "~4.8|~5.7"
     },
     "autoload": {
         "psr-0": { "Jb\\Bundle\\PhumborBundle": "" }
