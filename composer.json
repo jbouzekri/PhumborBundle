@@ -6,7 +6,7 @@
     "homepage": "https://github.com/jbouzekri/PhumborBundle",
     "license": "MIT",
     "require": {
-        "99designs/phumbor": "^1.1"
+        "webfactory/phumbor": "^1.1"
     },
     "require-dev": {
         "symfony/config": "~2.4",
