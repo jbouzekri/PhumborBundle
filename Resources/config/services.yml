@@ -4,21 +4,31 @@ parameters:
     phumbor.twig.extension.class: Jb\Bundle\PhumborBundle\Twig\PhumborExtension
 
 services:
-    phumbor.url.builder_factory:
+    Thumbor\Url\BuilderFactory:
         class: '%phumbor.url.builder_factory.class%'
         arguments:
             - '%phumbor.server.url%'
             - '%phumbor.secret%'
 
-    phumbor.url.transformer:
+    Jb\Bundle\PhumborBundle\Transformer\BaseTransformer:
         class: '%phumbor.url.transformer.class%'
         arguments:
-            - '@phumbor.url.builder_factory'
+            - '@Thumbor\Url\BuilderFactory'
             - '%phumbor.transformations%'
 
-    phumbor.twig.extension:
+    Jb\Bundle\PhumborBundle\Twig\PhumborExtension:
         class: '%phumbor.twig.extension.class%'
         arguments:
-            - '@phumbor.url.transformer'
+            - '@Jb\Bundle\PhumborBundle\Transformer\BaseTransformer'
         tags:
             - { name: twig.extension }
+
+    # Service aliases for BC:
+    phumbor.url.builder_factory:
+        alias: Thumbor\Url\BuilderFactory
+
+    phumbor.url.transformer:
+        alias: Jb\Bundle\PhumborBundle\Transformer\BaseTransformer
+
+    phumbor.twig.extension:
+        alias: Jb\Bundle\PhumborBundle\Twig\PhumborExtension
