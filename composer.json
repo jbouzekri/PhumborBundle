@@ -16,7 +16,6 @@
         "phpunit/phpunit": "~4.8|~5.7"
     },
     "autoload": {
-        "psr-0": { "Jb\\Bundle\\PhumborBundle": "" }
-    },
-    "target-dir": "Jb/Bundle/PhumborBundle"
+        "psr-4": { "Jb\\Bundle\\PhumborBundle\\": "" }
+    }
 }
