@@ -57,14 +57,6 @@ class PhumborExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test twig getName
-     */
-    public function testGetName()
-    {
-        $this->assertEquals($this->extension->getName(), 'phumbor_extension');
-    }
-
-    /**
      * Test twig get filters
      */
     public function testTransform()
