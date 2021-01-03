@@ -45,6 +45,41 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($config['server']['secret'], '123456789');
     }
 
+    public function testTransformationMerging()
+    {
+        // When a transformation is re-defined (overridden) in a later config file,
+        // the newer definition entirely replaces the older one.
+
+        $processor = new Processor();
+        $config = $processor->processConfiguration(new Configuration(), array(
+            // Values from first config file
+            array(
+                'transformations' => array(
+                    'test_not_overridden' => array(
+                        'resize' => array('width' => 100, 'height' => 100),
+                    ),
+                    'test_overridden' => array(
+                        'filters' => array(array('name' => 'quality', 'arguments' => array(60))),
+                        'resize' => array('width' => 100, 'height' => 100),
+                    ),
+                )
+            ),
+            // Values from second config file, should win
+            array(
+                'transformations' => array(
+                    'test_overridden' => array(
+                        'resize' => array('width' => 200, 'height' => 200),
+                    ),
+                )
+            ),
+        ));
+
+        $this->assertEquals(array(
+            'test_overridden' => array('resize' => array('width'=>200, 'height'=>200)),
+            'test_not_overridden' => array('resize' => array('width'=>100, 'height'=>100)),
+        ), $config['transformations']);
+    }
+
     /**
      * @dataProvider getTransformationData
      */
