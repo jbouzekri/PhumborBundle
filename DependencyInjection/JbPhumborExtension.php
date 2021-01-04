@@ -34,6 +34,8 @@ class JbPhumborExtension extends Extension
      */
     protected function loadConfiguration(ContainerBuilder $container, array $config)
     {
+        $container->setParameter('env(THUMBOR_URL)', 'http://localhost:8888');
+        $container->setParameter('env(THUMBOR_SECURITY_KEY)', '');
         $container->setParameter('phumbor.server.url', $config['server']['url']);
         $container->setParameter('phumbor.secret', $config['server']['secret']);
         $container->setParameter('phumbor.transformations', $config['transformations']);

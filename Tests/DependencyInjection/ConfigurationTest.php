@@ -174,8 +174,8 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             'server' => array(
-                'url' => 'http://localhost:8888',
-                'secret' => ''
+                'url' => '%env(THUMBOR_URL)%',
+                'secret' => '%env(THUMBOR_SECURITY_KEY)%'
             ),
             'transformations' => array()
         );

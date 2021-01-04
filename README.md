@@ -41,6 +41,9 @@ jb_phumbor:
         secret: 123456789
 ```
 
+Alternatively, you can also set the environment variables `THUMBOR_URL` and `THUMBOR_SECURITY_KEY` for these two settings, for example from your `.env`
+file or from inside your webserver configuration.
+
 Quick use case
 --------------
 
