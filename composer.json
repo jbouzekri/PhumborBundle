@@ -20,6 +20,9 @@
         "twig/twig": "<1.34"
     },
     "autoload": {
-        "psr-4": { "Jb\\Bundle\\PhumborBundle\\": "" }
+        "psr-4": { "Jb\\Bundle\\PhumborBundle\\": "src" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Jb\\Bundle\\PhumborBundle\\Tests\\": "tests" }
     }
 }

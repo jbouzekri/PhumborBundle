@@ -12,16 +12,12 @@
 
     <testsuites>
         <testsuite name="TestBundle Test Suite">
-            <directory>.</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">.</directory>
-            <exclude>
-                <directory>vendor</directory>
-                <directory>Tests</directory>
-            </exclude>
+            <directory suffix=".php">src</directory>
         </whitelist>
     </filter>
 </phpunit>
