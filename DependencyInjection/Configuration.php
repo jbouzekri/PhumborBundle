@@ -16,10 +16,8 @@ class Configuration implements ConfigurationInterface
 {
     /**
      * Generates the configuration tree builder.
-     *
-     * @return TreeBuilder The tree builder
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         if (Kernel::VERSION_ID >= 40200) {
             $treeBuilder = new TreeBuilder('jb_phumbor');
@@ -51,8 +49,6 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Add the transformation section configuration structure
-     *
-     * @param \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $rootNode
      */
     private function addTransformationSection(ArrayNodeDefinition $rootNode)
     {

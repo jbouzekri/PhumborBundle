@@ -17,7 +17,7 @@ class JbPhumborExtension extends Extension
     /**
      * {@inheritDoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $config = $this->processConfiguration(new Configuration(), $configs);
         $this->loadConfiguration($container, $config);
@@ -32,7 +32,7 @@ class JbPhumborExtension extends Extension
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      * @param array $config
      */
-    protected function loadConfiguration(ContainerBuilder $container, array $config)
+    protected function loadConfiguration(ContainerBuilder $container, array $config): void
     {
         $container->setParameter('env(THUMBOR_URL)', 'http://localhost:8888');
         $container->setParameter('env(THUMBOR_SECURITY_KEY)', '');
