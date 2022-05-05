@@ -14,10 +14,6 @@
         "webfactory/phumbor": "^1.1"
     },
     "require-dev": {
-        "symfony/config": "^3.4",
-        "symfony/dependency-injection": "^3.4",
-        "symfony/http-kernel": "^3.4",
-        "symfony/yaml": "^3.4",
         "phpunit/phpunit": "^7.0",
         "twig/extensions": "~1.0"
     },
