@@ -14,8 +14,10 @@
         "webfactory/phumbor": "^1.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.0",
-        "twig/extensions": "~1.0"
+        "phpunit/phpunit": "^8.5.26|^9.5.20",
+        "symfony/yaml": "^3.4|^4.4|^5.0|^6.0",
+        "twig/extensions": "~1.0",
+        "symfony/phpunit-bridge": ">=6.0"
     },
     "autoload": {
         "psr-4": { "Jb\\Bundle\\PhumborBundle\\": "src" }

@@ -3,6 +3,8 @@
 namespace Jb\Bundle\PhumborBundle\Tests\Transformer;
 
 use Jb\Bundle\PhumborBundle\Transformer\BaseTransformer;
+use Jb\Bundle\PhumborBundle\Transformer\Exception\UnknownTransformationException;
+use PHPUnit\Framework\TestCase;
 use Thumbor\Url\BuilderFactory;
 
 /**
@@ -10,7 +12,7 @@ use Thumbor\Url\BuilderFactory;
  *
  * @author jobou
  */
-class BaseTransformerTest extends \PHPUnit_Framework_TestCase
+class BaseTransformerTest extends TestCase
 {
     /**
      * @var \Jb\Bundle\PhumborBundle\Transformer\BaseTransformer
@@ -25,7 +27,7 @@ class BaseTransformerTest extends \PHPUnit_Framework_TestCase
     /**
      * SetUp
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->factory = new BuilderFactory('http://localhost', '123456789');
         $this->transformer = new BaseTransformer(
@@ -60,11 +62,9 @@ class BaseTransformerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($transformedUrl, $buildedUrl);
     }
 
-    /**
-     * @expectedException \Jb\Bundle\PhumborBundle\Transformer\Exception\UnknownTransformationException
-     */
     public function testUnknownTransformationException()
     {
+        self::expectException(UnknownTransformationException::class);
         $transformedUrl = $this->transformer->transform('http://phumbor.jb.fr/logo.png', 'not_known');
         $buildedUrl = $this->factory->url('http://phumbor.jb.fr/logo.png');
 

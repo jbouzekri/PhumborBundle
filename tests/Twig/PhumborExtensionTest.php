@@ -4,6 +4,7 @@ namespace Jb\Bundle\PhumborBundle\Tests\Twig;
 
 use Jb\Bundle\PhumborBundle\Twig\PhumborExtension;
 use Jb\Bundle\PhumborBundle\Transformer\BaseTransformer;
+use PHPUnit\Framework\TestCase;
 use Thumbor\Url\BuilderFactory;
 
 /**
@@ -11,7 +12,7 @@ use Thumbor\Url\BuilderFactory;
  *
  * @author jobou
  */
-class PhumborExtensionTest extends \PHPUnit_Framework_TestCase
+class PhumborExtensionTest extends TestCase
 {
     /**
      * @var \Jb\Bundle\PhumborBundle\Twig\PhumborExtension
@@ -26,7 +27,7 @@ class PhumborExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * SetUp
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->factory = new BuilderFactory('http://localhost', '123456789');
         $transformer = new BaseTransformer(
