@@ -33,7 +33,7 @@ class BaseTransformer
     /**
      * Phumbor Builder Factory
      *
-     * @var \Thumbor\Url\BuilderFactory
+     * @var BuilderFactory
      */
     protected $factory;
 
@@ -44,12 +44,6 @@ class BaseTransformer
      */
     protected $transformations;
 
-    /**
-     * Constructor
-     *
-     * @param \Thumbor\Url\BuilderFactory $factory
-     * @param array $transformations
-     */
     public function __construct(BuilderFactory $factory, array $transformations)
     {
         $this->factory = $factory;

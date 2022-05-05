@@ -32,7 +32,7 @@ class PhumborExtension extends AbstractExtension
     /**
      * {@inheritDoc}
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         return array(
             new TwigFilter('thumbor', array($this, 'transform')),
@@ -42,7 +42,7 @@ class PhumborExtension extends AbstractExtension
     /**
      * {@inheritDoc}
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return array(
             new TwigFunction('thumbor', array($this, 'transform')),
