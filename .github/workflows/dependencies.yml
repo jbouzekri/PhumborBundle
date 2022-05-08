@@ -1,0 +1,35 @@
+name: Dependencies
+
+permissions:
+    contents: read
+
+on:
+    push:
+        branches:
+            - master
+    pull_request:
+
+env:
+    PHP_VERSION: 7.4
+
+jobs:
+    composer-require-checker:
+        name: Check missing composer requirements
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: shivammathur/setup-php@v2
+                with:
+                  php-version: ${{ env.PHP_VERSION }}
+                  tools: composer:v2
+            -   uses: actions/checkout@v3
+            -   uses: actions/cache@v2
+                with:
+                    path: vendor
+                    key: composer-${{ runner.os }}-${{ env.PHP_VERSION }}-${{ hashFiles('composer.json') }}
+                    restore-keys: |
+                        composer-${{ runner.os }}-${{ env.PHP_VERSION }}-
+                        composer-${{ runner.os }}-
+            -   run: |
+                    composer install --no-interaction --no-progress --ansi --no-scripts
+                    composer show
+            -   uses: docker://webfactory/composer-require-checker:3.2.0

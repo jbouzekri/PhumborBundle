@@ -1,25 +1,28 @@
 {
     "name": "jbouzekri/phumbor-bundle",
     "type": "symfony-bundle",
-    "description": "A bridge for symfony with the phumbor client from 99designs",
+    "description": "A Symfony Bundle to use the minimal Thumbor PHP client from webfactory/phumbor",
     "keywords": ["phumbor", "thumbor", "Bundle", "Helper", "Twig", "Symfony"],
     "homepage": "https://github.com/jbouzekri/PhumborBundle",
     "license": "MIT",
     "require": {
+        "php": "^7.2|8.0.*|8.1.*",
+        "symfony/config": "^3.4|^4.4|^5.0|^6.0",
+        "symfony/dependency-injection": "^3.4|^4.4|^5.0|^6.0",
+        "symfony/http-kernel": "^3.4|^4.4|^5.0|^6.0",
+        "twig/twig": "^1.34|^2.0|^3.0",
         "webfactory/phumbor": "^1.1"
     },
     "require-dev": {
-        "symfony/config": "^3.4",
-        "symfony/dependency-injection": "^3.4",
-        "symfony/http-kernel": "^3.4",
-        "symfony/yaml": "^3.4",
-        "phpunit/phpunit": "^7.0",
-        "twig/extensions": "~1.0"
-    },
-    "conflict": {
-        "twig/twig": "<1.34"
+        "phpunit/phpunit": "^8.5.26|^9.5.20",
+        "symfony/yaml": "^3.4|^4.4|^5.0|^6.0",
+        "twig/extensions": "~1.0",
+        "symfony/phpunit-bridge": ">=6.0"
     },
     "autoload": {
-        "psr-4": { "Jb\\Bundle\\PhumborBundle\\": "" }
+        "psr-4": { "Jb\\Bundle\\PhumborBundle\\": "src" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Jb\\Bundle\\PhumborBundle\\Tests\\": "tests" }
     }
 }

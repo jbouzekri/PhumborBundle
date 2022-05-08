@@ -3,6 +3,8 @@
 namespace Jb\Bundle\PhumborBundle\Tests\DependencyInjection;
 
 use Jb\Bundle\PhumborBundle\DependencyInjection\Configuration;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\Processor;
 
 /**
@@ -10,7 +12,7 @@ use Symfony\Component\Config\Definition\Processor;
  *
  * @author Jonathan Bouzekri <jonathan.bouzekri@gmail.com>
  */
-class ConfigurationTest extends \PHPUnit_Framework_TestCase
+class ConfigurationTest extends TestCase
 {
     /**
      * Test the default configuration
@@ -135,11 +137,12 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @dataProvider getInvalidTypeData
      */
     public function testInvalidType($transformationData)
     {
+        self::expectException(InvalidConfigurationException::class);
+
         $processor = new Processor();
         $configuration = new Configuration();
         $processor->processConfiguration($configuration, array(

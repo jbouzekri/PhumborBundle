@@ -2,6 +2,7 @@
 
 namespace Jb\Bundle\PhumborBundle\Tests\DependencyInjection;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Jb\Bundle\PhumborBundle\DependencyInjection\JbPhumborExtension;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
@@ -11,7 +12,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
  *
  * @author Jonathan Bouzekri <jonathan.bouzekri@gmail.com>
  */
-abstract class JbPhumborExtensionTest extends \PHPUnit_Framework_TestCase
+abstract class JbPhumborExtensionTest extends TestCase
 {
     /**
      * Defined in children class
