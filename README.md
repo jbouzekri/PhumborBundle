@@ -1,17 +1,14 @@
 PhumborBundle
 =============
 
-[![Build Status](https://travis-ci.org/jbouzekri/PhumborBundle.svg?branch=master)](https://travis-ci.org/jbouzekri/PhumborBundle)
-[![Code Coverage](https://scrutinizer-ci.com/g/jbouzekri/PhumborBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/jbouzekri/PhumborBundle/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jbouzekri/PhumborBundle/badges/quality-score.png?s=a0a8958b6ab291dc6f867b7df49cf55be590c23d)](https://scrutinizer-ci.com/g/jbouzekri/PhumborBundle/)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/f3668751-012f-4444-9d48-7833e2a420ec/mini.png)](https://insight.sensiolabs.com/projects/f3668751-012f-4444-9d48-7833e2a420ec)
+[![Tests](https://github.com/jbouzekri/PhumborBundle/actions/workflows/tests.yml/badge.svg)](https://github.com/jbouzekri/PhumborBundle/actions/workflows/tests.yml)
 
-A bridge for symfony with the [phumbor client from 99designs](https://github.com/99designs/phumbor) to generate thumbor url.
+A Symfony Bundle to generate Thumbor image URLs, using the [PHP client from webfactory](https://github.com/webfactory/phumbor).
 
 Prerequisites
 -------------
 
-Of course, you must have a [thumbor server](https://github.com/thumbor/thumbor/wiki) installed and operationnal.
+Of course, you must have a [Thumbor server](https://github.com/thumbor/thumbor/wiki) installed and operationnal.
 If not, you can follow the [official installation documentation](https://github.com/thumbor/thumbor/wiki/Installing).
 
 Installation
@@ -20,7 +17,7 @@ Installation
 Add `jbouzekri/phumbor-bundle` as a dependency in `composer.json`.
 
 ``` yml
-"jbouzekri/phumbor-bundle": "~1.0"
+"jbouzekri/phumbor-bundle": "^3.0"
 ```
 
 Enable the bundle in your AppKernel :
@@ -32,7 +29,7 @@ $bundles = array(
 );
 ```
 
-In your config.yml, configure at least the url of your thumbor server and the secret :
+In your config.yml, configure at least the url of your Thumbor server and the secret :
 
 ``` yml
 jb_phumbor:
@@ -65,9 +62,9 @@ Now you can use it in twig :
 Documentation
 -------------
 
-* [Configuration Reference](Resources/doc/reference.md)
-* [Service](Resources/doc/service.md)
-* [Twig Helper](Resources/doc/twig_helper.md)
+* [Configuration Reference](src/Resources/doc/reference.md)
+* [Service](src/Resources/doc/service.md)
+* [Twig Helper](src/Resources/doc/twig_helper.md)
 
 License
 -------
