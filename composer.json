@@ -6,16 +6,16 @@
     "homepage": "https://github.com/jbouzekri/PhumborBundle",
     "license": "MIT",
     "require": {
-        "php": "^7.2|8.0.*|8.1.*|8.2.*",
-        "symfony/config": "^3.4|^4.4|^5.0|^6.0",
-        "symfony/dependency-injection": "^3.4|^4.4|^5.0|^6.0",
-        "symfony/http-kernel": "^3.4|^4.4|^5.0|^6.0",
+        "php": "^7.2|8.0.*|8.1.*|8.2.*|8.3.*",
+        "symfony/config": "^3.4|^4.4|^5.0|^6.0|^7.0",
+        "symfony/dependency-injection": "^3.4|^4.4|^5.0|^6.0|^7.0",
+        "symfony/http-kernel": "^3.4|^4.4|^5.0|^6.0|^7.0",
         "twig/twig": "^1.34|^2.0|^3.0",
         "webfactory/phumbor": "^1.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.5.26|^9.5.20",
-        "symfony/yaml": "^3.4|^4.4|^5.0|^6.0",
+        "symfony/yaml": "^3.4|^4.4|^5.0|^6.0|^7.0",
         "symfony/phpunit-bridge": ">=6.0"
     },
     "autoload": {
