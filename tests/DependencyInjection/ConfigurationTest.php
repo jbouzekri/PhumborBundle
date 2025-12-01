@@ -99,7 +99,7 @@ class ConfigurationTest extends TestCase
         $this->assertEquals($config['transformations']['key'], $processedTransformation);
     }
 
-    public function getTransformationData()
+    public static function getTransformationData()
     {
         return array(
             array(array('fit_in'=>array('width'=>10,'height'=>20)), array('fit_in'=>array('width'=>10,'height'=>20))),
@@ -154,7 +154,7 @@ class ConfigurationTest extends TestCase
         ));
     }
 
-    public function getInvalidTypeData($transformationData)
+    public static function getInvalidTypeData()
     {
         return array(
             array( array('resize'=>array('width'=>'toto','height'=>10)) ),

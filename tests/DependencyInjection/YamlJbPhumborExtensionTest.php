@@ -12,7 +12,7 @@ use Symfony\Component\Config\FileLocator;
  *
  * @author Jonathan Bouzekri <jonathan.bouzekri@gmail.com>
  */
-class YamlJbPhumborExtensionTest extends JbPhumborExtensionTest
+class YamlJbPhumborExtensionTest extends JbPhumborExtensionTestCase
 {
     protected function loadFromFile(ContainerBuilder $container, $file)
     {

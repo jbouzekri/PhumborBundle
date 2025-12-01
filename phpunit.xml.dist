@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" backupGlobals="false" backupStaticAttributes="false" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnFailure="false" bootstrap="vendor/autoload.php" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
-  <coverage processUncoveredFiles="true">
-    <include>
-      <directory suffix=".php">src</directory>
-    </include>
-  </coverage>
-  <testsuites>
-    <testsuite name="TestBundle Test Suite">
-      <directory>tests</directory>
-    </testsuite>
-  </testsuites>
-  <listeners>
-    <listener class="\Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
-  </listeners>
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
+    colors="true"
+    bootstrap="vendor/autoload.php"
+    cacheDirectory=".phpunit.cache"
+    displayDetailsOnAllIssues="true"
+    failOnAllIssues="true"
+>
+    <testsuites>
+        <testsuite name="TestBundle Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+    <source ignoreSuppressionOfDeprecations="true">
+        <include>
+            <directory>src</directory>
+        </include>
+    </source>
 </phpunit>

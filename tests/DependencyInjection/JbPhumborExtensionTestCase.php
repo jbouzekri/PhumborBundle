@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
  *
  * @author Jonathan Bouzekri <jonathan.bouzekri@gmail.com>
  */
-abstract class JbPhumborExtensionTest extends TestCase
+abstract class JbPhumborExtensionTestCase extends TestCase
 {
     /**
      * Defined in children class
