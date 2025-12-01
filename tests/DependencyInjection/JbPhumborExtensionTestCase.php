@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
  *
  * @author Jonathan Bouzekri <jonathan.bouzekri@gmail.com>
  */
-abstract class JbPhumborExtensionTest extends TestCase
+abstract class JbPhumborExtensionTestCase extends TestCase
 {
     /**
      * Defined in children class
@@ -23,7 +23,7 @@ abstract class JbPhumborExtensionTest extends TestCase
      */
     abstract protected function loadFromFile(ContainerBuilder $container, $file);
 
-    public function testLoading()
+    public function testLoading(): void
     {
         $container = $this->createContainerFromFile('transformers');
 
@@ -41,7 +41,7 @@ abstract class JbPhumborExtensionTest extends TestCase
      * @param array $data
      * @return \Symfony\Component\DependencyInjection\ContainerBuilder
      */
-    protected function createContainer(array $data = array())
+    protected function createContainer(array $data = array()): ContainerBuilder
     {
         return new ContainerBuilder(new ParameterBag(array_merge(array(
             'kernel.bundles'     => array('JbPhumborBundle' => 'Jb\\Bundle\\PhumborBundle\\JbPhumborBundle'),
@@ -62,7 +62,7 @@ abstract class JbPhumborExtensionTest extends TestCase
      *
      * @return \Symfony\Component\DependencyInjection\ContainerBuilder
      */
-    protected function createContainerFromFile($file, $data = array())
+    protected function createContainerFromFile($file, $data = array()): ContainerBuilder
     {
         $container = $this->createContainer($data);
         $container->registerExtension(new JbPhumborExtension());
