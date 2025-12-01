@@ -31,7 +31,7 @@ abstract class JbPhumborExtensionTestCase extends TestCase
         $this->assertEquals($container->getParameter('phumbor.secret'), '123456789');
         $this->assertEquals(
             $container->getParameter('phumbor.transformations'),
-            array('fit_in_test' => array('fit_in' => array('width'=>100, 'height'=>80)))
+            ['fit_in_test' => ['fit_in' => ['width'=>100, 'height'=>80]]]
         );
     }
 
@@ -41,16 +41,16 @@ abstract class JbPhumborExtensionTestCase extends TestCase
      * @param array $data
      * @return \Symfony\Component\DependencyInjection\ContainerBuilder
      */
-    protected function createContainer(array $data = array()): ContainerBuilder
+    protected function createContainer(array $data = []): ContainerBuilder
     {
-        return new ContainerBuilder(new ParameterBag(array_merge(array(
-            'kernel.bundles'     => array('JbPhumborBundle' => 'Jb\\Bundle\\PhumborBundle\\JbPhumborBundle'),
+        return new ContainerBuilder(new ParameterBag(array_merge([
+            'kernel.bundles'     => ['JbPhumborBundle' => 'Jb\\Bundle\\PhumborBundle\\JbPhumborBundle'],
             'kernel.cache_dir'   => __DIR__,
             'kernel.debug'       => false,
             'kernel.environment' => 'test',
             'kernel.name'        => 'kernel',
             'kernel.root_dir'    => __DIR__,
-        ), $data)));
+        ], $data)));
     }
 
     /**
@@ -62,14 +62,14 @@ abstract class JbPhumborExtensionTestCase extends TestCase
      *
      * @return \Symfony\Component\DependencyInjection\ContainerBuilder
      */
-    protected function createContainerFromFile($file, $data = array()): ContainerBuilder
+    protected function createContainerFromFile($file, $data = []): ContainerBuilder
     {
         $container = $this->createContainer($data);
         $container->registerExtension(new JbPhumborExtension());
         $this->loadFromFile($container, $file);
 
-        $container->getCompilerPassConfig()->setOptimizationPasses(array());
-        $container->getCompilerPassConfig()->setRemovingPasses(array());
+        $container->getCompilerPassConfig()->setOptimizationPasses([]);
+        $container->getCompilerPassConfig()->setRemovingPasses([]);
         $container->compile();
 
         return $container;

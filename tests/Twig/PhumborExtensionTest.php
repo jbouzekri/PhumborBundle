@@ -32,11 +32,11 @@ class PhumborExtensionTest extends TestCase
         $this->factory = new BuilderFactory('http://localhost', '123456789');
         $transformer = new BaseTransformer(
             $this->factory,
-            array(
-                'width_50' => array(
-                    'resize' => array('width'=>50, 'height'=>0)
-                )
-            )
+            [
+                'width_50' => [
+                    'resize' => ['width'=>50, 'height'=>0]
+                ]
+            ]
         );
         $this->extension = new PhumborExtension($transformer);
     }

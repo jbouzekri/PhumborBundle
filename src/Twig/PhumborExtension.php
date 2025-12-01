@@ -34,9 +34,9 @@ class PhumborExtension extends AbstractExtension
      */
     public function getFilters(): array
     {
-        return array(
-            new TwigFilter('thumbor', array($this, 'transform')),
-        );
+        return [
+            new TwigFilter('thumbor', [$this, 'transform']),
+        ];
     }
 
     /**
@@ -44,9 +44,9 @@ class PhumborExtension extends AbstractExtension
      */
     public function getFunctions(): array
     {
-        return array(
-            new TwigFunction('thumbor', array($this, 'transform')),
-        );
+        return [
+            new TwigFunction('thumbor', [$this, 'transform']),
+        ];
     }
 
     /**
@@ -58,7 +58,7 @@ class PhumborExtension extends AbstractExtension
      *
      * @return string
      */
-    public function transform($orig, $transformation = null, $overrides = array())
+    public function transform($orig, $transformation = null, $overrides = [])
     {
         return $this->transformer->transform($orig, $transformation, $overrides);
     }

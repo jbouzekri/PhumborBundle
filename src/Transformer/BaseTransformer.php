@@ -17,7 +17,7 @@ class BaseTransformer
      *
      * @var array
      */
-    protected static $filterMethod = array(
+    protected static $filterMethod = [
         'trim' => 'trim',
         'crop' => 'crop',
         'fit_in' => 'fitIn',
@@ -28,7 +28,7 @@ class BaseTransformer
         'smart_crop' => 'smartCrop',
         'metadata_only' => 'metadataOnly',
         'filters' => 'filters'
-    );
+    ];
 
     /**
      * Phumbor Builder Factory
@@ -222,9 +222,9 @@ class BaseTransformer
     protected function filters(Builder $url, $args)
     {
         foreach ($args as $arg) {
-            $arguments = (is_array($arg['arguments'])) ? $arg['arguments'] : array($arg['arguments']);
+            $arguments = (is_array($arg['arguments'])) ? $arg['arguments'] : [$arg['arguments']];
             array_unshift($arguments, $arg['name']);
-            call_user_func_array(array($url, 'addFilter'), $arguments);
+            call_user_func_array([$url, 'addFilter'], $arguments);
         }
     }
 

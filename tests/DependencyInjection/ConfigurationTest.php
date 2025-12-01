@@ -21,7 +21,7 @@ class ConfigurationTest extends TestCase
     public function testDefaultConfig(): void
     {
         $processor = new Processor();
-        $config = $processor->processConfiguration(new Configuration(), array());
+        $config = $processor->processConfiguration(new Configuration(), []);
 
         $this->assertEquals(
             self::getBundleDefaultConfig(),
@@ -35,14 +35,14 @@ class ConfigurationTest extends TestCase
     public function testServerConfiguration(): void
     {
         $processor = new Processor();
-        $config = $processor->processConfiguration(new Configuration(), array(
-            array(
-                'server' => array(
+        $config = $processor->processConfiguration(new Configuration(), [
+            [
+                'server' => [
                     'url' => 'http://jb.phumbor.fr:8888',
                     'secret' => '123456789'
-                )
-            )
-        ));
+                ]
+            ]
+        ]);
 
         $this->assertEquals($config['server']['url'], 'http://jb.phumbor.fr:8888');
         $this->assertEquals($config['server']['secret'], '123456789');
@@ -54,85 +54,85 @@ class ConfigurationTest extends TestCase
         // the newer definition entirely replaces the older one.
 
         $processor = new Processor();
-        $config = $processor->processConfiguration(new Configuration(), array(
+        $config = $processor->processConfiguration(new Configuration(), [
             // Values from first config file
-            array(
-                'transformations' => array(
-                    'test_not_overridden' => array(
-                        'resize' => array('width' => 100, 'height' => 100),
-                    ),
-                    'test_overridden' => array(
-                        'filters' => array(array('name' => 'quality', 'arguments' => array(60))),
-                        'resize' => array('width' => 100, 'height' => 100),
-                    ),
-                )
-            ),
+            [
+                'transformations' => [
+                    'test_not_overridden' => [
+                        'resize' => ['width' => 100, 'height' => 100],
+                    ],
+                    'test_overridden' => [
+                        'filters' => [['name' => 'quality', 'arguments' => [60]]],
+                        'resize' => ['width' => 100, 'height' => 100],
+                    ],
+                ]
+            ],
             // Values from second config file, should win
-            array(
-                'transformations' => array(
-                    'test_overridden' => array(
-                        'resize' => array('width' => 200, 'height' => 200),
-                    ),
-                )
-            ),
-        ));
+            [
+                'transformations' => [
+                    'test_overridden' => [
+                        'resize' => ['width' => 200, 'height' => 200],
+                    ],
+                ]
+            ],
+        ]);
 
-        $this->assertEquals(array(
-            'test_overridden' => array('resize' => array('width'=>200, 'height'=>200)),
-            'test_not_overridden' => array('resize' => array('width'=>100, 'height'=>100)),
-        ), $config['transformations']);
+        $this->assertEquals([
+            'test_overridden' => ['resize' => ['width'=>200, 'height'=>200]],
+            'test_not_overridden' => ['resize' => ['width'=>100, 'height'=>100]],
+        ], $config['transformations']);
     }
 
     #[DataProvider('getTransformationData')]
     public function testTransformationConfiguration($transformationConfig, $processedTransformation): void
     {
         $processor = new Processor();
-        $config = $processor->processConfiguration(new Configuration(), array(
-            array(
-                'transformations' => array(
+        $config = $processor->processConfiguration(new Configuration(), [
+            [
+                'transformations' => [
                     'key' => $transformationConfig
-                )
-            )
-        ));
+                ]
+            ]
+        ]);
 
         $this->assertEquals($config['transformations']['key'], $processedTransformation);
     }
 
     public static function getTransformationData(): array
     {
-        return array(
-            array(array('fit_in'=>array('width'=>10,'height'=>20)), array('fit_in'=>array('width'=>10,'height'=>20))),
-            array(
-                array('full_fit_in'=>array('width'=>10,'height'=>20)),
-                array('full_fit_in'=>array('width'=>10,'height'=>20))
-            ),
-            array(array('trim'=>true), array('trim'=>true)),
-            array(array('trim'=>'string'), array('trim'=>'string')),
-            array(
-                array('crop'=>array('top_left_x'=>10,'top_left_y'=>10,'bottom_right_x'=>10,'bottom_right_y'=>10)),
-                array('crop'=>array('top_left_x'=>10,'top_left_y'=>10,'bottom_right_x'=>10,'bottom_right_y'=>10))
-            ),
-            array(
-                array('resize'=>array('width'=>'orig','height'=>'orig')),
-                array('resize'=>array('width'=>'orig','height'=>'orig'))
-            ),
-            array(
-                array('resize'=>array('width'=>10,'height'=>10)),
-                array('resize'=>array('width'=>10,'height'=>10))
-            ),
-            array(array('halign'=>'left'), array('halign'=>'left')),
-            array(array('halign'=>'center'), array('halign'=>'center')),
-            array(array('halign'=>'right'), array('halign'=>'right')),
-            array(array('valign'=>'top'), array('valign'=>'top')),
-            array(array('valign'=>'middle'), array('valign'=>'middle')),
-            array(array('valign'=>'bottom'), array('valign'=>'bottom')),
-            array(array('smart_crop'=>true), array('smart_crop'=>true)),
-            array(array('metadata_only'=>true), array('metadata_only'=>true)),
-            array(
-                array('filters'=>array( array('name'=>'brightness', 'arguments'=>array('82')) )),
-                array('filters'=>array( array('name'=>'brightness', 'arguments'=>array('82')) )),
-            ),
-        );
+        return [
+            [['fit_in'=>['width'=>10,'height'=>20]], ['fit_in'=>['width'=>10,'height'=>20]]],
+            [
+                ['full_fit_in'=>['width'=>10,'height'=>20]],
+                ['full_fit_in'=>['width'=>10,'height'=>20]]
+            ],
+            [['trim'=>true], ['trim'=>true]],
+            [['trim'=>'string'], ['trim'=>'string']],
+            [
+                ['crop'=>['top_left_x'=>10,'top_left_y'=>10,'bottom_right_x'=>10,'bottom_right_y'=>10]],
+                ['crop'=>['top_left_x'=>10,'top_left_y'=>10,'bottom_right_x'=>10,'bottom_right_y'=>10]]
+            ],
+            [
+                ['resize'=>['width'=>'orig','height'=>'orig']],
+                ['resize'=>['width'=>'orig','height'=>'orig']]
+            ],
+            [
+                ['resize'=>['width'=>10,'height'=>10]],
+                ['resize'=>['width'=>10,'height'=>10]]
+            ],
+            [['halign'=>'left'], ['halign'=>'left']],
+            [['halign'=>'center'], ['halign'=>'center']],
+            [['halign'=>'right'], ['halign'=>'right']],
+            [['valign'=>'top'], ['valign'=>'top']],
+            [['valign'=>'middle'], ['valign'=>'middle']],
+            [['valign'=>'bottom'], ['valign'=>'bottom']],
+            [['smart_crop'=>true], ['smart_crop'=>true]],
+            [['metadata_only'=>true], ['metadata_only'=>true]],
+            [
+                ['filters'=>[ ['name'=>'brightness', 'arguments'=>['82']] ]],
+                ['filters'=>[ ['name'=>'brightness', 'arguments'=>['82']] ]],
+            ],
+        ];
     }
 
     #[DataProvider('getInvalidTypeData')]
@@ -142,27 +142,27 @@ class ConfigurationTest extends TestCase
 
         $processor = new Processor();
         $configuration = new Configuration();
-        $processor->processConfiguration($configuration, array(
-            array(
-                'transformations' => array(
+        $processor->processConfiguration($configuration, [
+            [
+                'transformations' => [
                     'key' => $transformationData
-                )
-            )
-        ));
+                ]
+            ]
+        ]);
     }
 
     public static function getInvalidTypeData(): array
     {
-        return array(
-            array( array('resize'=>array('width'=>'toto','height'=>10)) ),
-            array( array('resize'=>array('width'=>10,'height'=>'toto')) ),
-            array( array('resize'=>array('width'=>null,'height'=>'toto')) ),
-            array( array('resize'=>array('width'=>10,'height'=>null)) ),
-            array( array('valign'=>10) ),
-            array( array('valign'=>null) ),
-            array( array('halign'=>10) ),
-            array( array('halign'=>null) ),
-        );
+        return [
+            [ ['resize'=>['width'=>'toto','height'=>10]] ],
+            [ ['resize'=>['width'=>10,'height'=>'toto']] ],
+            [ ['resize'=>['width'=>null,'height'=>'toto']] ],
+            [ ['resize'=>['width'=>10,'height'=>null]] ],
+            [ ['valign'=>10] ],
+            [ ['valign'=>null] ],
+            [ ['halign'=>10] ],
+            [ ['halign'=>null] ],
+        ];
     }
 
     /**
@@ -172,12 +172,12 @@ class ConfigurationTest extends TestCase
      */
     protected static function getBundleDefaultConfig(): array
     {
-        return array(
-            'server' => array(
+        return [
+            'server' => [
                 'url' => '%env(THUMBOR_URL)%',
                 'secret' => '%env(THUMBOR_SECURITY_KEY)%'
-            ),
-            'transformations' => array()
-        );
+            ],
+            'transformations' => []
+        ];
     }
 }
