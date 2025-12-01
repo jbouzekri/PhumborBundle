@@ -16,29 +16,29 @@ jobs:
             fail-fast: false
             matrix:
                 include:
-                    - { php-version: 7.2, symfony-locked-version: none, dependency-version: prefer-lowest }
-                    - { php-version: 7.4, symfony-locked-version: 4.4.*, dependency-version: prefer-stable }
-                    - { php-version: 8.1, symfony-locked-version: 5.4.*, dependency-version: prefer-stable }
-                    - { php-version: 8.1, symfony-locked-version: 6.4.*, dependency-version: prefer-stable }
-                    - { php-version: 8.2, symfony-locked-version: 7.0.*, dependency-version: prefer-stable }
-                    - { php-version: 8.3, symfony-locked-version: 7.0.*, dependency-version: prefer-stable }
-                    - { php-version: 8.4, symfony-locked-version: 7.0.*, dependency-version: prefer-stable }
-        name: PHPUnit (PHP ${{matrix.php-version}}, Symfony Version Lock ${{ matrix.symfony-locked-version }}, ${{ matrix.dependency-version }})
+                    - { php-version: 8.1, symfony-version: 5.4.*, dependency-version: prefer-lowest }
+                    - { php-version: 8.1, symfony-version: 6.4.*, dependency-version: prefer-stable }
+                    - { php-version: 8.2, symfony-version: 7.*, dependency-version: prefer-stable }
+                    - { php-version: 8.3, symfony-version: 7.*, dependency-version: prefer-stable }
+                    - { php-version: 8.4, symfony-version: 7.*, dependency-version: prefer-stable }
+                    - { php-version: 8.5, symfony-version: 8.*, dependency-version: prefer-stable }
+        name: PHPUnit (PHP ${{matrix.php-version}}, Symfony Version ${{ matrix.symfony-version }}, ${{ matrix.dependency-version }})
         steps:
+            -   uses: actions/checkout@v4
             -   uses: shivammathur/setup-php@v2
                 with:
-                  php-version: ${{ matrix.php-version }}
-                  tools: composer:v2
-            -   uses: actions/checkout@v4
-            -   run: VERSION=${{ matrix.symfony-locked-version }} .github/workflows/lock-symfony-version.sh
-                if: matrix.symfony-locked-version != 'none'
+                    php-version: ${{ matrix.php-version }}
+                    coverage: none
+                    tools: composer:v2, flex
             -   uses: actions/cache@v4
                 with:
                     path: vendor
-                    key: composer-${{ runner.os }}-${{ matrix.php-version }}-${{ matrix.symfony-locked-version }}-${{ matrix.dependency-version }}-${{ hashFiles('composer.json') }}
+                    key: composer-${{ runner.os }}-${{ matrix.php-version }}-${{ matrix.symfony-version }}-${{ matrix.dependency-version }}-${{ hashFiles('composer.json') }}
                     restore-keys: |
-                        composer-${{ runner.os }}-${{ matrix.php-version }}-${{ matrix.symfony-locked-version }}-${{ matrix.dependency-version }}-
-            -   run: |
-                    composer update --no-interaction --no-progress --ansi --no-scripts --${{ matrix.dependency-version}}
-                    composer show
+                        composer-${{ runner.os }}-${{ matrix.php-version }}-${{ matrix.symfony-version }}-${{ matrix.dependency-version }}-
+            -   run: composer update --no-interaction --no-scripts --no-progress --ansi --${{ matrix.dependency-version }}
+                env:
+                    SYMFONY_REQUIRE: ${{ matrix.symfony-version }}
+                    COMPOSER_NO_SECURITY_BLOCKING: 1
+            -   run: composer show
             -   run: vendor/bin/phpunit
