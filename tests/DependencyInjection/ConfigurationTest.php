@@ -3,6 +3,7 @@
 namespace Jb\Bundle\PhumborBundle\Tests\DependencyInjection;
 
 use Jb\Bundle\PhumborBundle\DependencyInjection\Configuration;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\Processor;
@@ -17,7 +18,7 @@ class ConfigurationTest extends TestCase
     /**
      * Test the default configuration
      */
-    public function testDefaultConfig()
+    public function testDefaultConfig(): void
     {
         $processor = new Processor();
         $config = $processor->processConfiguration(new Configuration(), array());
@@ -31,7 +32,7 @@ class ConfigurationTest extends TestCase
     /**
      * Test the server configuration
      */
-    public function testServerConfiguration()
+    public function testServerConfiguration(): void
     {
         $processor = new Processor();
         $config = $processor->processConfiguration(new Configuration(), array(
@@ -47,7 +48,7 @@ class ConfigurationTest extends TestCase
         $this->assertEquals($config['server']['secret'], '123456789');
     }
 
-    public function testTransformationMerging()
+    public function testTransformationMerging(): void
     {
         // When a transformation is re-defined (overridden) in a later config file,
         // the newer definition entirely replaces the older one.
@@ -82,10 +83,8 @@ class ConfigurationTest extends TestCase
         ), $config['transformations']);
     }
 
-    /**
-     * @dataProvider getTransformationData
-     */
-    public function testTransformationConfiguration($transformationConfig, $processedTransformation)
+    #[DataProvider('getTransformationData')]
+    public function testTransformationConfiguration($transformationConfig, $processedTransformation): void
     {
         $processor = new Processor();
         $config = $processor->processConfiguration(new Configuration(), array(
@@ -99,7 +98,7 @@ class ConfigurationTest extends TestCase
         $this->assertEquals($config['transformations']['key'], $processedTransformation);
     }
 
-    public static function getTransformationData()
+    public static function getTransformationData(): array
     {
         return array(
             array(array('fit_in'=>array('width'=>10,'height'=>20)), array('fit_in'=>array('width'=>10,'height'=>20))),
@@ -136,10 +135,8 @@ class ConfigurationTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider getInvalidTypeData
-     */
-    public function testInvalidType($transformationData)
+    #[DataProvider('getInvalidTypeData')]
+    public function testInvalidType($transformationData): void
     {
         self::expectException(InvalidConfigurationException::class);
 
@@ -154,7 +151,7 @@ class ConfigurationTest extends TestCase
         ));
     }
 
-    public static function getInvalidTypeData()
+    public static function getInvalidTypeData(): array
     {
         return array(
             array( array('resize'=>array('width'=>'toto','height'=>10)) ),
@@ -173,7 +170,7 @@ class ConfigurationTest extends TestCase
      *
      * @return array
      */
-    protected static function getBundleDefaultConfig()
+    protected static function getBundleDefaultConfig(): array
     {
         return array(
             'server' => array(

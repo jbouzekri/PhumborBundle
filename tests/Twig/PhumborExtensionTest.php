@@ -44,7 +44,7 @@ class PhumborExtensionTest extends TestCase
     /**
      * Test twig getFilters
      */
-    public function testGetFilters()
+    public function testGetFilters(): void
     {
         $this->assertEquals(count($this->extension->getFilters()), 1);
     }
@@ -52,7 +52,7 @@ class PhumborExtensionTest extends TestCase
     /**
      * Test twig getFunctions
      */
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $this->assertEquals(count($this->extension->getFunctions()), 1);
     }
@@ -60,7 +60,7 @@ class PhumborExtensionTest extends TestCase
     /**
      * Test twig get filters
      */
-    public function testTransform()
+    public function testTransform(): void
     {
         $transformedUrl = $this->extension->transform('logo.png', 'width_50');
         $builtUrl = $this->factory->url('logo.png')->resize(50, 0);

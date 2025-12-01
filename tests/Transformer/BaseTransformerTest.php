@@ -43,7 +43,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test without transformation
      */
-    public function testEmptyTransformation()
+    public function testEmptyTransformation(): void
     {
         $transformedUrl = $this->transformer->transform('http://phumbor.jb.fr/logo.png', null);
         $buildedUrl = $this->factory->url('http://phumbor.jb.fr/logo.png');
@@ -54,7 +54,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test normal transformation
      */
-    public function testNormalTransformation()
+    public function testNormalTransformation(): void
     {
         $transformedUrl = $this->transformer->transform('http://phumbor.jb.fr/logo.png', 'width_50');
         $buildedUrl = $this->factory->url('http://phumbor.jb.fr/logo.png')->resize(50, 0);
@@ -62,7 +62,7 @@ class BaseTransformerTest extends TestCase
         $this->assertEquals($transformedUrl, $buildedUrl);
     }
 
-    public function testUnknownTransformationException()
+    public function testUnknownTransformationException(): void
     {
         self::expectException(UnknownTransformationException::class);
         $transformedUrl = $this->transformer->transform('http://phumbor.jb.fr/logo.png', 'not_known');
@@ -74,7 +74,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test override transformation
      */
-    public function testOverrideTransformation()
+    public function testOverrideTransformation(): void
     {
         $transformedUrl = $this->transformer->transform(
             'http://phumbor.jb.fr/logo.png',
@@ -89,7 +89,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test multiple transformation
      */
-    public function testMultipleTransformation()
+    public function testMultipleTransformation(): void
     {
         $transformedUrl = $this->transformer->transform(
             'http://phumbor.jb.fr/logo.png',
@@ -107,7 +107,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test trim without color
      */
-    public function testTrimWithoutColor()
+    public function testTrimWithoutColor(): void
     {
         $transformedUrl = $this->transformer->transform('http://phumbor.jb.fr/logo.png', null, array('trim'=>false));
         $buildedUrl = $this->factory->url('http://phumbor.jb.fr/logo.png')->trim(false);
@@ -118,7 +118,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test trim with color
      */
-    public function testTrimWithColor()
+    public function testTrimWithColor(): void
     {
         $transformedUrl = $this->transformer->transform('http://phumbor.jb.fr/logo.png', null, array('trim'=>'color'));
         $buildedUrl = $this->factory->url('http://phumbor.jb.fr/logo.png')->trim('color');
@@ -129,7 +129,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test crop
      */
-    public function testCrop()
+    public function testCrop(): void
     {
         $transformedUrl = $this->transformer->transform(
             'http://phumbor.jb.fr/logo.png',
@@ -144,7 +144,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test crop
      */
-    public function testResize()
+    public function testResize(): void
     {
         $transformedUrl = $this->transformer->transform(
             'http://phumbor.jb.fr/logo.png',
@@ -159,7 +159,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test crop
      */
-    public function testFitIn()
+    public function testFitIn(): void
     {
         $transformedUrl = $this->transformer->transform(
             'http://phumbor.jb.fr/logo.png',
@@ -174,7 +174,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test fullFitIn
      */
-    public function testFullFitIn()
+    public function testFullFitIn(): void
     {
         $transformedUrl = $this->transformer->transform(
             'http://phumbor.jb.fr/logo.png',
@@ -189,7 +189,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test halign
      */
-    public function testHalign()
+    public function testHalign(): void
     {
         $transformedUrl = $this->transformer->transform(
             'http://phumbor.jb.fr/logo.png',
@@ -204,7 +204,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test valign
      */
-    public function testValign()
+    public function testValign(): void
     {
         $transformedUrl = $this->transformer->transform(
             'http://phumbor.jb.fr/logo.png',
@@ -219,7 +219,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test smartCrop
      */
-    public function testSmartCrop()
+    public function testSmartCrop(): void
     {
         $transformedUrl = $this->transformer->transform(
             'http://phumbor.jb.fr/logo.png',
@@ -234,7 +234,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test metadataOnly
      */
-    public function testMetadataOnly()
+    public function testMetadataOnly(): void
     {
         $transformedUrl = $this->transformer->transform(
             'http://phumbor.jb.fr/logo.png',
@@ -249,7 +249,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test filters
      */
-    public function testFilters()
+    public function testFilters(): void
     {
         $transformedUrl = $this->transformer->transform(
             'http://phumbor.jb.fr/logo.png',
@@ -275,7 +275,7 @@ class BaseTransformerTest extends TestCase
     /**
      * Test setFactory
      */
-    public function testSetFactory()
+    public function testSetFactory(): void
     {
         $overrideFactory = new BuilderFactory('http://mynewhostname', '123456799');
         $this->transformer->setFactory($overrideFactory);

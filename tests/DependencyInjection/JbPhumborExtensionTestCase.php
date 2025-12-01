@@ -23,7 +23,7 @@ abstract class JbPhumborExtensionTestCase extends TestCase
      */
     abstract protected function loadFromFile(ContainerBuilder $container, $file);
 
-    public function testLoading()
+    public function testLoading(): void
     {
         $container = $this->createContainerFromFile('transformers');
 
@@ -41,7 +41,7 @@ abstract class JbPhumborExtensionTestCase extends TestCase
      * @param array $data
      * @return \Symfony\Component\DependencyInjection\ContainerBuilder
      */
-    protected function createContainer(array $data = array())
+    protected function createContainer(array $data = array()): ContainerBuilder
     {
         return new ContainerBuilder(new ParameterBag(array_merge(array(
             'kernel.bundles'     => array('JbPhumborBundle' => 'Jb\\Bundle\\PhumborBundle\\JbPhumborBundle'),
@@ -62,7 +62,7 @@ abstract class JbPhumborExtensionTestCase extends TestCase
      *
      * @return \Symfony\Component\DependencyInjection\ContainerBuilder
      */
-    protected function createContainerFromFile($file, $data = array())
+    protected function createContainerFromFile($file, $data = array()): ContainerBuilder
     {
         $container = $this->createContainer($data);
         $container->registerExtension(new JbPhumborExtension());
