@@ -61,15 +61,15 @@ class BaseTransformer
      *
      * @throws \Jb\Bundle\PhumborBundle\Transformer\Exception\UnknownTransformationException
      */
-    public function transform($orig, $transformation = null, $overrides = array())
+    public function transform($orig, $transformation = null, $overrides = [])
     {
         $url = $this->factory->url($orig);
-        if (is_null($transformation) && count($overrides) == 0) {
+        if (!$overrides && null === $transformation) {
             return $url;
         }
 
         // Check if a transformation is given without overrides
-        if (!isset($this->transformations[$transformation]) && count($overrides) == 0) {
+        if (!$overrides && (null === $transformation || !isset($this->transformations[$transformation]))) {
             throw new Exception\UnknownTransformationException(
                 "Unknown transformation $transformation. Use on of "
                 . "the following ".implode(', ', array_keys($this->transformations))
@@ -77,9 +77,10 @@ class BaseTransformer
         }
 
         // Override transformation configuration with custom values
-        $configuration = array();
-        if (isset($this->transformations[$transformation])) {
+        if (null !== $transformation && isset($this->transformations[$transformation])) {
             $configuration = $this->transformations[$transformation];
+        } else {
+            $configuration = [];
         }
         $configuration = array_merge($configuration, $overrides);
 
