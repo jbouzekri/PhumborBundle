@@ -117,7 +117,7 @@ class Configuration implements ConfigurationInterface
                             ->end()
                             ->scalarNode('halign')
                                 ->validate()
-                                    ->ifNotInArray(array('left', 'center', 'right'))
+                                    ->ifNotInArray(['left', 'center', 'right'])
                                     ->thenInvalid(
                                         'Invalid transformation.halign value %s. '
                                         . 'It must be one of the following : left, center, right.'
@@ -126,7 +126,7 @@ class Configuration implements ConfigurationInterface
                             ->end()
                             ->scalarNode('valign')
                                 ->validate()
-                                    ->ifNotInArray(array('top', 'middle', 'bottom'))
+                                    ->ifNotInArray(['top', 'middle', 'bottom'])
                                     ->thenInvalid(
                                         'Invalid transformation.valign value %s. '
                                         . 'It must be one of the following : top, middle, bottom.'
